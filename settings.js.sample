@@ -6,6 +6,8 @@ var config = {
 
     // Registration
     disable_registration: false,
+    registration_username: false,
+    registration_password: false,
 
     // HTTPS
     /***

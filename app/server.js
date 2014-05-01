@@ -229,7 +229,10 @@ var Server = function(config) {
         //
         // Register
         //
-        self.app.post('/register', function(req, res) {
+        var auth = false;
+        if(self.config.registration_username && self.config.registration_password)
+            auth = express.basicAuth(self.config.registration_username, self.config.registration_password);
+        self.app.post('/register', auth, function(req, res) {
             if (self.config.disable_registration) {
                 // Registration is not enabled bro
                 res.send(403, {
